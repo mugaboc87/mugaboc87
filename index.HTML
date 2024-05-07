@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body><style>
+  body{
+    background-image:url(./Screenshot\ \(73\).png);
+  }
+.calculator {
+  width: 200px;
+  margin:  auto;
+  padding: 38px;
+  border:  10px black  solid;
+  border-radius: 10px;
+  background-color:rgb(62, 6, 55) (111, 0, 128) (103, 111, 23);
+  
+  
+  
+}
+
+#display {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 20px;
+  box-shadow:  2px 4px 2px rgb(0, 0, 0) inset;
+  margin-right: 50px;
+  color: black solid 3px;
+  
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  border: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 4px 8px 3px black inset;
+}
+
+button:hover {
+  background-color: rgb(95, 16, 124);
+  transition: none;
+}
+#dl{
+  background-color: red;
+cursor: pointer;
+
+}
+</style>
+
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <div class="buttons">
+      <button onclick="clearDisplay()" id="dl">DELETE</button>
+      <button onclick="clearAll()" id="dl">ac</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('*')">*</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="appendToDisplay('/')">/</button>
+    </div>
+  </div>
+  <sript src="script.js">
+  <script>
+    let displayValue = '';
+
+function appendToDisplay(value) {
+  displayValue += value;
+  
+  document.getElementById('display').value = displayValue;
+}
+
+function clearDisplay() {
+  displayValue =displayValue.substring(displayValue.length -1,0);
+  document.getElementById('display').value = displayValue;
+
+
+}
+
+
+function clearAll() {
+  displayValue = '';
+  document.getElementById('display').value = displayValue;
+}
+
+function calculate() {
+  try {
+    const result = eval(displayValue);
+    displayValue = result.toString();
+    
+    document.getElementById('display').value = displayValue;
+  } catch (error) {
+    displayValue = '';
+    document.getElementById('display').value = 'Error';
+  }
+}
+
+  </script>
+  </body>
+  </html>
